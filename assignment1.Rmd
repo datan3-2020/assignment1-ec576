@@ -15,10 +15,9 @@ In this assignment you will work with the individual level data from wave 8 of t
 
 ```{r}
 library(tidyverse)
-getwd()
-setwd("/Users/emili/Documents/Data SOC Term 2 Year 2/assignment1")
-setwd("/Users/emili/Documents/Data SOC Term 2 Year 2")
+
 Data <-  read_tsv("/Users/emili/Documents/Data SOC Term 2 Year 2/UKDA-6614-tab/tab/ukhls_w8/h_indresp.tab")
+
 ```
 
 Now you have got your data frame stored as Data. 
@@ -93,12 +92,10 @@ Data <- Data %>%
 Let us **dplyr** to calculate how many people in the sample supported Remain and Leave, both as absolute numbers and percentages.
 
 ```{r}
-install.packages("dplyr")
-library()
 Data %>%
   count(EU) %>%
   mutate(perc= n/sum(n) *100)
-        ...
+        
         
 ```
 
@@ -115,7 +112,7 @@ Now let us look at the support for Leave and Remain by sex and age. Use your new
 Data %>%
   group_by(agegr, sex) %>%
   summarise(propEU = mean(EU, na.rm = TRUE) * 100)
-        ...
+        
         
 ```
 
